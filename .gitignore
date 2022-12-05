@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# папки со статикой и медиа
+static/
+bonus_card/static/
+bonus_card/media/

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-5">
+      <div class="row">
+        <aside class="col-12 col-md-3">
+          <ul class="list-group list-group-flush">
+            <li>
+              Серия: {{ series }} Номер: {{ number }}
+            </li>
+            <li>
+              Дата выпуска: {{ release_date|date:"d E Y h:i" }}
+            </li>
+            <li>
+              Дата окончания активности: {{ end_date|date:"d E Y h:i" }}
+            </li>
+            <li>
+              Статус: {{ card_status}}
+            </li>
+          </ul>
+        </aside>
+        <article class="col-12 col-md-9">
+          {% include 'add_applying.html' %}
+        </article>
+      </div>
+</div> 
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block header %}Бонусные карты{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Список карт</h1>
+  <article>
+      {% for card in page_obj %}
+        <ul>
+          <li>
+            Серия: {{ card.series }} Номер: {{ card.number }}
+            <a href="{% url 'card:card_detail' card.id %}"> просмотр профиля карты с историей покупок по ней</a>
+          </li>
+          <li>
+            Дата выпуска: {{ card.release_date|date:"d E Y h:i" }}
+          </li>
+          <li>
+            Дата окончания активности: {{ card.end_date|date:"d E Y h:i" }}
+          </li>
+          <li>
+            Статус: {{ card.card_status}}
+          </li>
+        </ul>
+        {% if not forloop.last %}<hr>{% endif %} 
+      {% endfor %}
+    {% include 'includes/paginator.html' %}
+  </article>
+{% endblock content %}
