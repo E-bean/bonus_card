@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from card.models import Applying, Card
 from django.shortcuts import get_object_or_404, redirect
-from card.forms import ApplyingForm
+from card.forms import ApplyingForm, CardForm
 
 
 CARDS_PER_PAGE = 5
@@ -53,4 +53,19 @@ def add_applying(request, card_id):
         applying = form.save(commit=False)
         applying.card = card
         applying.save()
-    return redirect('card:card_detail', card_id=card_id) 
+    return redirect('card:card_detail', card_id=card_id)
+
+def card_edit(request, card_id):
+    card = get_object_or_404(Card, pk=card_id)
+    form = CardForm(
+        request.POST or None,
+        files=request.FILES or None,
+        instance=card
+    )
+    context = {
+        'form': form,
+        'card': card}
+    if form.is_valid():
+        form.save()
+        return redirect('card:card_detail', card_id=card_id)
+    return render(request, 'card_edit.html', context)

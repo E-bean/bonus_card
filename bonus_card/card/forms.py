@@ -1,6 +1,6 @@
 from django import forms
 
-from card.models import Applying
+from card.models import Applying, Card
 
 
 class ApplyingForm(forms.ModelForm):
@@ -11,3 +11,9 @@ class ApplyingForm(forms.ModelForm):
             'date_of_use': 'Дата использования',
             'amount': 'Сумма',
         }
+
+
+class CardForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        fields = ('card_status',)
