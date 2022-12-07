@@ -17,8 +17,13 @@
             <li>
               Статус: {{ card_status}}
             </li>
+            <br></br>
             <a class="btn btn-primary" href="{% url 'card:card_edit' card.id %}" role="button">
               Изменить статус
+            </a>
+            <br></br>
+            <a class="btn btn-primary" href="{% url 'card:card_delete' card.id %}" role="button">
+              Удалить карту
             </a>
           </ul>
         </aside>

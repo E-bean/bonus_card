@@ -69,3 +69,8 @@ def card_edit(request, card_id):
         form.save()
         return redirect('card:card_detail', card_id=card_id)
     return render(request, 'card_edit.html', context)
+
+
+def card_delete(request, card_id):
+    card = Card.objects.filter(id=card_id).delete()
+    return redirect('card:index')
