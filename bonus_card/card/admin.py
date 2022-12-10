@@ -5,7 +5,9 @@ from card.models import Applying, Card
 
 @admin.register(Card)
 class CardAdmin(admin.ModelAdmin):
-    list_display = ('series', 'number', 'release_date', 'end_date', 'card_status')
+    list_display = (
+        'series', 'number', 'release_date', 'end_date', 'card_status'
+    )
     list_editable = ('card_status',)
     search_fields = ('card_status',)
     list_filter = ('number',)

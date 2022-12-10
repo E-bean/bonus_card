@@ -1,4 +1,3 @@
-import random
 from datetime import datetime
 
 from dateutil.relativedelta import relativedelta
@@ -81,14 +80,20 @@ def card_delete(request, card_id):
 
 def generator(request):
     if request.method == 'POST':
+        cards = Card.objects.all().order_by('id')
+        print(cards)
+        if len(cards) == 0:
+            last_number = 0
+        else:
+            last_card = Card.objects.all().order_by('-id')[0]
+            last_number = last_card.number
         quantity = int(request.POST.get('quantity'))
         series = int(request.POST.get('series'))
         period = int(request.POST.get('period'))
         end_date = datetime.now() + relativedelta(months=+period)
         for i in range(quantity):
-            number = random.randint(1, 100000)
-            while Card.objects.filter(number=number).exists():
-                number = random.randint(1, 100000)
+            number = last_number + 1
+            last_number += 1
             Card.objects.create(
                 series=series,
                 end_date=end_date,
