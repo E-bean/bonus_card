@@ -17,3 +17,9 @@ class CardForm(forms.ModelForm):
     class Meta:
         model = Card
         fields = ('card_status',)
+
+
+class SearchForm(forms.ModelForm):
+    class Meta:
+        model = Card
+        fields = ('series', 'number', 'end_date', 'card_status')

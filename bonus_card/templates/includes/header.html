@@ -1,0 +1,17 @@
+{% load static %}
+
+<nav class="navbar navbar-light" style="background-color: lightskyblue">
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li class="nav-item"> 
+          <a class="nav-link" href="{% url 'card:index' %}">Список карт</a>
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link link-light" href="{% url 'card:generator' %}">Генератор карточек</a>
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link link-light" href="{% url 'card:search' %}">Поиск</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
